@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="manifest" href="./manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/icons/apple-touch-icon-76x76-1.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./img/icons/apple-touch-icon-152x152-1.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/icons/apple-touch-icon-180x180-1.png" />
+
+
+  <title>pwa-test</title>
+</head>
+
+<body>
+  <a href="/index2.html">点击跳转其他导航</a>
+  <div id="test">这是一个测试页面呀</div>
+  <button id="send">点击发送xhr请求</button>
+  <script src="/main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw-my.js', { scope: '/' })
+          .then(function (registration) {
+            // 注册成功
+            console.log('ServiceWorker registration successful with scope: ', registration.scope)
+          })
+          .catch(function (err) {
+            // 注册失败:(
+            console.log('ServiceWorker registration failed: ', err)
+          })
+      })
+    }
+  </script>
+</body>
+
+</html>
